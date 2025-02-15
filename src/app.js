@@ -58,7 +58,17 @@ app.post("/applied_job/:id", (req, res) => {
   const matchingJobs = req.params.id;
   const Job = JOBS.find((job) => job.id.toString() === matchingJobs);
 
+  const emailTemplatePath = path.resolve(__dirname, "emailTemplate.html");
+
+if (!fs.existsSync(emailTemplatePath)) {
+    console.error("🚨 emailTemplate.html is MISSING on Vercel!");
+} else {
+    console.log("✅ emailTemplate.html is found!");
+}
+
+  
   // Read HTML Template and replace placeholders
+
   let emailTemplate = fs.readFileSync("src/emailTemplate.html", "utf8");
   emailTemplate = emailTemplate
     .replace("{{name}}", name)
