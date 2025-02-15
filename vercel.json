@@ -11,9 +11,8 @@
         "src": "/(.*)",
         "dest": "src/app.js"
       }
-    ]
+    ],
+    "includeFiles": ["src/emailTemplate.html"]
   }
   
-{
-  "includeFiles": ["src/emailTemplate.html"]
-}
+
